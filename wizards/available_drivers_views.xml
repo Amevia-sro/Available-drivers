@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Available Drivers form view -->
+    <record id="available_drivers_view_form" model="ir.ui.view">
+        <field name="name">available.drivers.view.form</field>
+        <field name="model">available.drivers</field>
+        <field name="arch" type="xml">
+            <form string="Available Drivers">
+                <group>
+                    <group>
+                        <field name="Journey_start_date">
+                            <modifiers>
+                                <modifier name="required" invisible="false"/>
+                            </modifiers>
+                        </field>
+                        <field name="Journey_end_date">
+                            <modifiers>
+                                <modifier name="required" invisible="false"/>
+                            </modifiers>
+                        </field>
+                    </group>
+                </group>
+                <footer>
+                    <button name="get_available_drivers" string="Available Drivers"
+                            type="object" class="oe_highlight"/>
+                    <button special="cancel" string="Ok"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <!-- Available Drivers action -->
+    <record id="available_drivers_action" model="ir.actions.act_window">
+        <field name="name">Available Drivers</field>
+        <field name="res_model">available.drivers</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="available_drivers_view_form"/>
+        <field name="target">new</field>
+    </record>
+    <!-- Menu to show the wizard -->
+    <menuitem action="available_drivers_action"
+              id="available_drivers_menu_wizard"
+              name="Drivers"
+              parent="project.menu_project_report"/>
+</odoo>
+
+
